@@ -1,7 +1,11 @@
-function App() {
+// JSX - JavaScript + XML
+import { Post } from "./Post.jsx"
+
+export function App() {
   return (
-    <h1>hello world</h1>
+    <div>
+      <Post />
+      <Post />
+    </div>
   )
 }
-
-export default App
