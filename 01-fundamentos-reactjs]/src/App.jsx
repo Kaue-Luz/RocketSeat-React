@@ -2,7 +2,7 @@
 import { Post } from "./Post.jsx"
 import { Header } from "./modules/Header.jsx"
 
-import './styles.css'
+import './global.css'
 
 export function App() {
   return (
