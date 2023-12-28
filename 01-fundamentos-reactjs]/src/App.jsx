@@ -1,11 +1,13 @@
 // JSX - JavaScript + XML
-import { Post } from "./Post.jsx"
-import { Header } from "./modules/Header.jsx"
+import { Sidebar } from "./components/Sidebar.jsx";
+import { Header } from "./components/Header.jsx"
+import { Post } from "./components/Post.jsx"
+
 
 import './global.css'
 
 import styles from "./App.module.css";
-import { Sidebar } from "./modules/Sidebar.jsx";
+
 
 export function App() {
   return (
@@ -15,14 +17,8 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post 
-            author="Erik Kaue"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo adipisci ratione in error enim sunt reprehenderit incidunt veritatis omnis iure, ullam exercitationem reiciendis sed! Quidem quibusdam saepe vero magni distinctio?"
-          />
-          <Post 
-            author="Kaue erik"
-            content="outro post"
-          />
+          <Post />
+          <Post />
         </main>
       </div>
     </div>
