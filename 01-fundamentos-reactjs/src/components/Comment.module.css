@@ -1,7 +1,7 @@
 .comment{
-    margin-top: 2.4rem;
+    margin-top: 1.5rem;
     display: flex;
-    gap: 1.6rem;
+    gap: 1rem;
 }
 
 .commentBox{
@@ -11,7 +11,7 @@
 .commentContent {
     background: var(--gray-700);
     border-radius: 8px;
-    padding: 1.6rem;
+    padding: 1rem;
 }
 
 .commentContent header {
@@ -36,24 +36,24 @@
 
 .authorAndTime strong {
     display: block;
-    font-size: 1.4rem;
+    font-size: 0.875rem;
     line-height: 1.6;
 }
 
 .authorAndTime time {
     display: block;
-    font-size: 1.2rem;
+    font-size: 0.75rem;
     line-height: 1.6;
     color: var(--gray-400);
 }
 
 .commentContent p {
-    margin-top: 1.6rem;
+    margin-top: 1rem;
     color: var(--gray-300);
 }
 
 .commentBox footer {
-    margin-top: 1.6rem;
+    margin-top: 1rem;
 }
 
 .commentBox footer button { 
@@ -72,10 +72,10 @@
 }
 
 .commentBox footer svg {
-    margin-right: 0.8rem;
+    margin-right: 0.5rem;
 }
 
 .commentBox footer button span::before {
-    padding: 0 0.4rem;
+    padding: 0 0.25rem;
     content: "\2022";
 }

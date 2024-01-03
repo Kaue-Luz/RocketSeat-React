@@ -1,10 +1,22 @@
 .wrapper {
-    max-width: 112rem;
-    margin: 3.2rem auto;
-    padding: 0 1.6rem;
+    max-width: 70rem;
+    margin: 2rem auto;
+    padding: 0 1rem;
     
     display: grid;
-    grid-template-columns: 25.6rem 1fr;
-    gap: 3.2rem;
+    grid-template-columns: 16rem 1fr;
+    gap: 2rem;
     align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+
+    /*lembrar de mudar font size do :root*/
+    html {
+        font-size: 87.5%;
+    }
+
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
 }
