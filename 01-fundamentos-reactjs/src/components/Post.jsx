@@ -1,51 +1,69 @@
-import { Avatar } from './Avatar'
-import { Comment } from './Comment'
-import styles from './Post.module.css'
+/* eslint-disable react/prop-types */
+import { format, formatDistanceToNow } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
-export function Post (props) {
-    console.log(props);
-    
-    return(
-        <article className={styles.post}>
-            <header>
-                <div className={styles.author}>
-                    <Avatar src="https:github.com/FeBassetto.png" />
-                    <div className={styles.authorInfo}>
-                        <strong>Erik Kaue</strong>
-                        <span>Web Developer</span>
-                    </div>
-                </div>
+import { Avatar } from "./Avatar";
+import { Comment } from "./Comment";
+import styles from "./Post.module.css";
 
-                <time title="19 de Maio às 09:00h" dateTime="2023-05-19 09:00:24">Publicado há 1h</time>
-            </header>
+export function Post({ author, content, publishedAt }) {
+  const publishedDateFormatted = format(
+    publishedAt,
+    "d 'de' LLLL 'às' HH:mm'h'",
+    { locale: ptBR }
+  );
 
-            <div className={styles.content}>
-                <p>Fala galeraa 👋</p>
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+    locale: ptBR,
+    addSuffix: true,
+  });
 
-                <p>Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀</p>
+  return (
+    <article className={styles.post}>
+      <header>
+        <div className={styles.author}>
+          <Avatar src={author.avatarUrl} />
+          <div className={styles.authorInfo}>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
+          </div>
+        </div>
 
-                <p><a href="">👉 jane.design/doctorcare</a></p>
+        <time
+          title={publishedDateFormatted}
+          dateTime={publishedAt.toISOString()}
+        >
+          {publishedDateRelativeToNow}
+        </time>
+      </header>
 
-                <p><a href="">#novoprojeto #nlw #rocketseat</a></p>
-            </div>
+      <div className={styles.content}>
+        {content.map((line) => {
+          if (line.type === "paragraph") return <p>{line.content}</p>;
+          else if (line.type === "link")
+            return (
+              <p>
+                <a href="#">{line.content}</a>
+              </p>
+            );
+        })}
+      </div>
 
-            <form className={styles.commentForm}>
-                <strong>Deixe seu feedback</strong>
+      <form className={styles.commentForm}>
+        <strong>Deixe seu feedback</strong>
 
-                <textarea 
-                    placeholder="Deixe um comentário"
-                />
+        <textarea placeholder="Deixe um comentário" />
 
-                <footer>
-                    <button type="submit">Comentar</button>
-                </footer>
-            </form>
+        <footer>
+          <button type="submit">Comentar</button>
+        </footer>
+      </form>
 
-            <div className={styles.commentList}>
-                <Comment />
-                <Comment />
-                <Comment />
-            </div>
-        </article>
-    )
+      <div className={styles.commentList}>
+        <Comment />
+        <Comment />
+        <Comment />
+      </div>
+    </article>
+  );
 }
