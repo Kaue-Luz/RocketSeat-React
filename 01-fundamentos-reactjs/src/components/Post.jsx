@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-key */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { format, formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
@@ -21,12 +20,19 @@ export function Post({ author, content, publishedAt }) {
     addSuffix: true,
   });
 
-  const [comments, setComments] = useState([ ])
+  const [comments, setComments] = useState(["comentario"]);
+
+  const [newCommentText, setNewCommentText] = useState("");
 
   function createNewComment() {
-    event.preventDefault()
+    event.preventDefault();
 
-    setComments([...comments, comments.length + 1])
+    setComments([...comments, newCommentText]);
+    setNewCommentText("");
+  }
+
+  function newCommentChange() {
+    setNewCommentText(event.target.value);
   }
 
   return (
@@ -63,7 +69,12 @@ export function Post({ author, content, publishedAt }) {
       <form onSubmit={createNewComment} className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>
 
-        <textarea placeholder="Deixe um comentário" />
+        <textarea
+          name="comment"
+          placeholder="Deixe um comentário"
+          value={newCommentText}
+          onChange={newCommentChange}
+        />
 
         <footer>
           <button type="submit">Comentar</button>
@@ -72,7 +83,7 @@ export function Post({ author, content, publishedAt }) {
 
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment />;
+          return <Comment content={comment} />;
         })}
       </div>
     </article>
